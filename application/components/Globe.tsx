@@ -37,7 +37,7 @@ export default function Globe() {
         onGlobeReady={() => {
           if (globeEl.current) {
              // @ts-ignore
-            globeEl.current.pointOfView({ lat: 39.6, lng: -98.5, altitude: 1.7 }, 0);
+            globeEl.current.pointOfView({ lat: 39.6, lng: -98.5, altitude: 1 }, 0);
             // @ts-ignore
             globeEl.current.controls().autoRotate = false;
             // @ts-ignore
@@ -51,6 +51,18 @@ export default function Globe() {
         polygonSideColor={() => 'rgba(0,0,0,0)'}
         polygonStrokeColor={() => '#3b82f6'}
         polygonAltitude={0.01}
+
+        htmlElementsData={[{ lat: 37.7749, lng: -122.4194 }]}
+        htmlElement={(d) => {
+          const el = document.createElement('div');
+          el.innerHTML = `
+            <span class="flex h-3 w-3">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-3 w-3 bg-white"></span>
+            </span>
+          `;
+          return el;
+        }}
       />
     </div>
   );
