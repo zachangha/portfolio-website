@@ -72,7 +72,7 @@ export default async function Projects() {
               target="_blank" 
               rel="noopener noreferrer" 
               key={index} 
-              className="bg-gray-800 rounded-lg p-6 hover:shadow-xl transition duration-300 border border-gray-700 block"
+              className="bg-gray-800 rounded-lg p-6 hover:shadow-xl transition-all duration-300 border border-gray-700 block transform hover:-translate-y-2 hover:border-blue-500"
             >
               <h3 className="text-2xl font-bold mb-4 text-blue-400">{project.title}</h3>
               <p className="text-gray-300 mb-6">{project.description}</p>
