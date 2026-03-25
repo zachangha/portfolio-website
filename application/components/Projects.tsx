@@ -10,12 +10,32 @@ export default async function Projects() {
     if (!res.ok) throw new Error("Failed to fetch repositories");
     const repos = await res.json();
     
-    projects = repos.map((repo: any) => ({
-      title: repo.name,
-      description: repo.description || "No description provided.",
-      tech: repo.language ? [repo.language] : [],
-      url: repo.html_url
-    }));  
+    projects = await Promise.all(
+      repos.map(async (repo: any) => {
+        let tech: string[] = [];
+        try {
+          const langRes = await fetch(repo.languages_url, {
+            next: { revalidate: 3600 },
+            headers: { "User-Agent": "portfolio-website" },
+          });
+          if (langRes.ok) {
+            const langs = await langRes.json();
+            tech = Object.keys(langs); // Returns an array of language names
+          } else {
+            tech = repo.language ? [repo.language] : [];
+          }
+        } catch (err) {
+          tech = repo.language ? [repo.language] : [];
+        }
+
+        return {
+          title: repo.name,
+          description: repo.description || "No description provided.",
+          tech,
+          url: repo.html_url,
+        };
+      })
+    );
   } catch (error) {
     console.error("Error fetching projects:", error);
     // Fallback projects if fetch fails
