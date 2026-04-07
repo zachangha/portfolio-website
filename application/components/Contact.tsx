@@ -35,56 +35,66 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-20 bg-gray-800 text-white">
-      <div className="container mx-auto px-6 max-w-2xl">
-        <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">Contact Me</h2>
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">Name</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              required
-              className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:border-blue-500 text-white"
-              placeholder="Your Name"
-            />
+    <section id="contact" className="py-32 px-6 bg-black">
+      <div className="container mx-auto max-w-4xl">
+        <div className="flex flex-col md:flex-row gap-20">
+          <div className="md:w-1/2">
+            <h3 className="text-5xl md:text-6xl font-serif text-white/90 mb-12 gold-glow leading-tight">Contact <span className="italic italic text-gold">me.</span></h3>
+            <div className="space-y-6 text-white/40 font-medium">
+            </div>
           </div>
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">Email</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              required
-              className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:border-blue-500 text-white"
-              placeholder="your@email.com"
-            />
+          
+          <div className="md:w-1/2">
+            <form onSubmit={handleSubmit} className="space-y-8">
+              <div className="space-y-6">
+                <div>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                    className="w-full bg-transparent border-b border-white/10 py-4 focus:border-gold outline-none transition-all text-white placeholder:text-white/20 font-serif text-lg"
+                    placeholder="Name"
+                  />
+                </div>
+                <div>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    className="w-full bg-transparent border-b border-white/10 py-4 focus:border-gold outline-none transition-all text-white placeholder:text-white/20 font-serif text-lg"
+                    placeholder="Email"
+                  />
+                </div>
+                <div>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={4}
+                    required
+                    className="w-full bg-transparent border-b border-white/10 py-4 focus:border-gold outline-none transition-all text-white placeholder:text-white/20 font-serif text-lg resize-none"
+                    placeholder="Message"
+                  ></textarea>
+                </div>
+              </div>
+              
+              <button
+                type="submit"
+                className="gold-button w-full md:w-auto"
+                disabled={status === "Sending..."}
+              >
+                {status === "Sending..." ? "Transmitting..." : "Submit"}
+              </button>
+              
+              {status && status !== "Sending..." && (
+                <p className={`mt-6 text-[10px] uppercase tracking-widest font-bold ${status.includes("success") ? "text-gold" : "text-red-500"}`}>
+                  {status}
+                </p>
+              )}
+            </form>
           </div>
-          <div>
-            <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">Message</label>
-            <textarea
-              id="message"
-              name="message"
-              rows={4}
-              required
-              className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:border-blue-500 text-white"
-              placeholder="Your message..."
-            ></textarea>
-          </div>
-          <button
-            type="submit"
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition duration-300 disabled:opacity-50"
-            disabled={status === "Sending..."}
-          >
-            {status === "Sending..." ? "Sending..." : "Send Message"}
-          </button>
-          {status && status !== "Sending..." && (
-            <p className={`text-center mt-4 ${status.includes("success") ? "text-green-400" : "text-red-400"}`}>
-              {status}
-            </p>
-          )}
-        </form>
+        </div>
       </div>
     </section>
   );

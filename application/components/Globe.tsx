@@ -32,33 +32,33 @@ export default function Globe() {
         atmosphereColor='rgba(0,0,0,0)'
         globeMaterial={
           // @ts-ignore
-          new THREE.MeshPhongMaterial({ color: '#1a202c', opacity: 1, transparent: false })
+          new THREE.MeshPhongMaterial({ color: '#050505', opacity: 1, transparent: false, emissive: '#111' })
         }
         onGlobeReady={() => {
           if (globeEl.current) {
              // @ts-ignore
-            globeEl.current.pointOfView({ lat: 39.6, lng: -98.5, altitude: 1 }, 0);
+            globeEl.current.pointOfView({ lat: 34.05, lng: -118.24, altitude: 2 }, 0);
             // @ts-ignore
-            globeEl.current.controls().autoRotate = false;
+            globeEl.current.controls().autoRotate = true;
             // @ts-ignore
-            globeEl.current.controls().autoRotateSpeed = 0.5;
+            globeEl.current.controls().autoRotateSpeed = 0.8;
             // @ts-ignore
             globeEl.current.controls().enableZoom = false;
           }
         }}
         polygonsData={countries.features}
-        polygonCapColor={() => 'rgba(0,0,0,0)'}
+        polygonCapColor={() => 'rgba(212, 175, 55, 0.05)'}
         polygonSideColor={() => 'rgba(0,0,0,0)'}
-        polygonStrokeColor={() => '#3b82f6'}
+        polygonStrokeColor={() => '#D4AF37'}
         polygonAltitude={0.01}
 
-        htmlElementsData={[{ lat: 37.7749, lng: -122.4194 }]}
+        htmlElementsData={[{ lat: 34.0522, lng: -118.2437 }]} // Los Angeles
         htmlElement={(d) => {
           const el = document.createElement('div');
           el.innerHTML = `
             <span class="flex h-3 w-3">
-              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-3 w-3 bg-white"></span>
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-3 w-3 bg-gold shadow-[0_0_10px_#D4AF37]"></span>
             </span>
           `;
           return el;

@@ -1,18 +1,27 @@
 export default function About() {
   return (
-    <section id="about" className="py-20 bg-gray-800 text-white">
-      <div className="container mx-auto px-6">
-        <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">About Me</h2>
-        <div className="max-w-3xl mx-auto text-lg text-gray-300 leading-relaxed">
-          <p className="mb-6">
-            I am a full-stack developer with a passion for creating beautiful and functional web applications. 
-            With a background in computer science and years of hands-on experience, I love tackling complex problems 
-            and turning ideas into reality.
-          </p>
-          <p>
-            When I'm not coding, you can find me exploring new technologies, contributing to open source, 
-            or enjoying a good cup of coffee.
-          </p>
+    <section id="about" className="py-32 px-6 bg-black relative">
+      <div className="container mx-auto max-w-4xl relative z-10">
+        <div className="flex flex-col md:flex-row gap-16 items-start">
+          <div className="md:w-1/3">
+            <h2 className="text-xs uppercase tracking-[0.6em] font-bold text-gold mb-4 relative inline-block">
+              About
+              <div className="absolute -bottom-2 left-0 w-8 h-[1px] bg-gold" />
+            </h2>
+          </div>
+          <div className="md:w-2/3 space-y-8">
+            <p className="text-3xl md:text-4xl font-serif leading-tight text-white/90">
+              I am a developer driven by the pursuit of <span className="text-gold italic">uncompromising</span> quality and aesthetic excellence.
+            </p>
+            <div className="space-y-6 text-white/40 text-lg font-medium leading-relaxed">
+              <p>
+                With a deep background in systems architecture and user experience design, I bridge the gap between complex functionality and intuitive interaction.
+              </p>
+              <p>
+                My work is defined by a meticulous attention to detail and a commitment to building digital solutions that are as robust as they are beautiful.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>

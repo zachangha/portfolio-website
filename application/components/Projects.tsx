@@ -62,26 +62,43 @@ export default async function Projects() {
   }
 
   return (
-    <section id="projects" className="py-20 bg-gray-900 text-white">
-      <div className="container mx-auto px-6">
-        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">My Projects</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <section id="projects" className="py-32 px-6 bg-black relative">
+      <div className="container mx-auto">
+        <div className="flex flex-col md:flex-row gap-12 mb-24 items-end">
+          <h2 className="text-6xl md:text-8xl font-serif tracking-tight text-white/10 select-none absolute -top-12 left-6">Works</h2>
+          <div className="z-10">
+            <h3 className="text-xs uppercase tracking-[0.6em] font-bold text-gold mb-4">Projects</h3>
+          </div>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
           {projects.map((project: any, index: number) => (
             <a 
+              key={index} 
               href={project.url} 
               target="_blank" 
               rel="noopener noreferrer" 
-              key={index} 
-              className="bg-gray-800 rounded-lg p-6 hover:shadow-xl transition-all duration-300 border border-gray-700 block transform hover:-translate-y-2 hover:border-blue-500"
+              className="group relative flex flex-col h-full bg-white/[0.03] border border-white/5 p-10 hover:border-gold/30 transition-all duration-700 overflow-hidden"
             >
-              <h3 className="text-2xl font-bold mb-4 text-blue-400">{project.title}</h3>
-              <p className="text-gray-300 mb-6">{project.description}</p>
-              <div className="flex flex-wrap gap-2">
-                {project.tech.map((t: string, i: number) => (
-                  <span key={i} className="bg-gray-700 text-sm px-3 py-1 rounded-full text-gray-300">
-                    {t}
+              <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-100 transition-opacity">
+                <span className="text-gold text-2xl font-serif tracking-tighter">0{index + 1}</span>
+              </div>
+              
+              <h3 className="text-2xl font-serif text-white/90 mb-4 group-hover:text-gold transition-colors">{project.title}</h3>
+              <p className="text-white/40 text-sm mb-12 font-medium leading-relaxed">
+                {project.description}
+              </p>
+              
+              <div className="mt-auto flex flex-wrap gap-3 mb-10">
+                {project.tech.slice(0, 3).map((tag: any) => (
+                  <span key={tag} className="text-[10px] uppercase tracking-widest font-bold text-gold/60">
+                    {tag}
                   </span>
                 ))}
+              </div>
+              
+              <div className="inline-flex items-center text-[10px] uppercase tracking-[0.4em] font-bold text-white/30 group-hover:text-gold transition-all duration-500">
+                Details <span className="ml-4 w-12 h-[1px] bg-white/10 group-hover:bg-gold transition-colors" />
               </div>
             </a>
           ))}
