@@ -1,7 +1,7 @@
 export default async function Projects() {
   let projects = [];
   try {
-    const res = await fetch("https://api.github.com/users/zachangha/repos?sort=updated&per_page=12", { 
+    const res = await fetch("https://api.github.com/users/zachangha/repos?sort=updated&per_page=6", { 
       next: { revalidate: 3600 },
       headers: {
         "User-Agent": "portfolio-website"
