@@ -39,7 +39,7 @@ export default function Globe() {
              // @ts-ignore
             globeEl.current.pointOfView({ lat: 34.05, lng: -118.24, altitude: 2 }, 0);
             // @ts-ignore
-            globeEl.current.controls().autoRotate = true;
+            globeEl.current.controls().autoRotate = false;
             // @ts-ignore
             globeEl.current.controls().autoRotateSpeed = 0.8;
             // @ts-ignore
@@ -52,7 +52,11 @@ export default function Globe() {
         polygonStrokeColor={() => '#D4AF37'}
         polygonAltitude={0.01}
 
-        htmlElementsData={[{ lat: 34.0522, lng: -118.2437 }]} // Los Angeles
+        htmlElementsData={[
+          { lat: 34.0522, lng: -118.2437 }, // Los Angeles
+          { lat: 37.7749, lng: -122.4194 }, // San Francisco
+          { lat: 30.2672, lng: -97.7431 } // Austin
+        ]}
         htmlElement={(d) => {
           const el = document.createElement('div');
           el.innerHTML = `
