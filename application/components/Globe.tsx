@@ -15,6 +15,25 @@ export default function Globe() {
   const [countries, setCountries] = useState({ features: [] });
   const [width, setWidth] = useState(0);
   const [selectedCity, setSelectedCity] = useState<any>(null);
+  const [displayCity, setDisplayCity] = useState<any>(null);
+  const [isClosing, setIsClosing] = useState(false);
+
+  useEffect(() => {
+    let timeoutId: NodeJS.Timeout;
+    if (selectedCity) {
+      setDisplayCity(selectedCity);
+      setIsClosing(false);
+    } else if (displayCity) {
+      setIsClosing(true);
+      timeoutId = setTimeout(() => {
+        setDisplayCity(null);
+        setIsClosing(false);
+      }, 500);
+    }
+    return () => {
+      if (timeoutId) clearTimeout(timeoutId);
+    };
+  }, [selectedCity, displayCity]);
 
   useEffect(() => {
     setMounted(true);
@@ -82,28 +101,51 @@ export default function Globe() {
         }}
       />
 
+      <style>{`
+        @keyframes popup-enter {
+          0% { opacity: 0; transform: translateY(20px) scale(0.95); }
+          100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        @keyframes popup-exit {
+          0% { opacity: 1; transform: translateY(0) scale(1); }
+          100% { opacity: 0; transform: translateY(20px) scale(0.95); }
+        }
+        
+        .glass-popup {
+          animation: popup-enter 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .glass-popup-exit {
+          animation: popup-exit 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+      `}</style>
+      
       {/* Info Text Box Popup */}
-      {selectedCity && (
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 md:bottom-auto md:left-auto md:top-1/4 md:right-12 bg-[#0a0a0a]/80 backdrop-blur-xl border border-[#D4AF37]/30 p-6 rounded-2xl shadow-[0_15px_40px_-10px_rgba(212,175,55,0.4)] z-50 w-full max-w-[280px]">
-          <button 
-            onClick={() => setSelectedCity(null)} 
-            className="absolute top-3 right-3 w-8 h-8 flex items-center justify-center rounded-full bg-white/5 hover:bg-[#D4AF37]/20 text-white/50 hover:text-[#D4AF37] transition-all duration-300"
-          >
-            &times;
-          </button>
-          
-          <div className="flex flex-col">
-            <div className="flex items-center gap-3 mb-3">
-              <div className="relative flex h-3 w-3">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D4AF37] opacity-60"></span>
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-[#D4AF37] shadow-[0_0_8px_#D4AF37]"></span>
+      {displayCity && (
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 md:bottom-auto md:left-auto md:top-1/4 md:right-12 z-50 w-full max-w-[280px] pointer-events-none perspective-[1000px]">
+          <div className={`relative w-full h-full pointer-events-auto bg-gradient-to-br from-[#1a1a1a]/95 to-[#0a0a0a]/95 backdrop-blur-xl border border-[#D4AF37]/30 p-6 rounded-2xl shadow-[0_20px_50px_-10px_rgba(212,175,55,0.3)] ${isClosing ? 'glass-popup-exit' : 'glass-popup'} overflow-hidden`}>
+            
+            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-white/[0.03] to-transparent pointer-events-none"></div>
+
+            <button 
+              onClick={() => setSelectedCity(null)} 
+              className="absolute top-3 right-3 w-8 h-8 flex items-center justify-center rounded-full bg-white/5 hover:bg-[#D4AF37]/20 text-white/50 hover:text-[#D4AF37] transition-colors duration-300 z-10"
+            >
+              &times;
+            </button>
+            
+            <div className="flex flex-col relative z-10">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="relative flex h-3 w-3 shrink-0">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D4AF37] opacity-60"></span>
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-[#D4AF37] shadow-[0_0_12px_#D4AF37]"></span>
+                </div>
+                <h3 className="bg-gradient-to-br from-white to-gray-400 bg-clip-text text-transparent font-bold text-xl tracking-tight leading-none">{displayCity.city}</h3>
               </div>
-              <h3 className="text-white font-semibold text-xl tracking-wide">{selectedCity.city}</h3>
+              
+              <div className="h-[1px] w-full bg-gradient-to-r from-[#D4AF37]/40 via-[#D4AF37]/10 to-transparent mb-4"></div>
+              
+              <p className="text-gray-300 font-light text-sm leading-relaxed">{displayCity.info}</p>
             </div>
-            
-            <div className="h-[1px] w-full bg-gradient-to-r from-[#D4AF37]/50 to-transparent mb-3"></div>
-            
-            <p className="text-gray-300 font-light text-sm leading-relaxed">{selectedCity.info}</p>
           </div>
         </div>
       )}
