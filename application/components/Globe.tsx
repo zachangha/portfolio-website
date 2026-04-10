@@ -4,9 +4,9 @@ import GlobeT, { GlobeMethods } from 'react-globe.gl';
 import * as THREE from 'three';
 
 const citiesData = [
-  { lat: 34.0522, lng: -118.2437, city: 'Los Angeles', info: 'Current residence' },
-  { lat: 37.7749, lng: -122.4194, city: 'San Francisco', info: 'Achieved Bachelor of Science in Computer Science at San Francisco State University' },
-  { lat: 30.2672, lng: -97.7431, city: 'Austin', info: 'Currently pursuing a Master of Science in Artificial Intelligence at the University of Texas at Austin' }
+  { lat: 34.0522, lng: -118.2437, city: 'Los Angeles', info: ['Current residence'] },
+  { lat: 37.7749, lng: -122.4194, city: 'San Francisco', info: ['Achieved Bachelor of Science in Computer Science', 'San Francisco State University'] },
+  { lat: 30.2672, lng: -97.7431, city: 'Austin', info: ['Currently pursuing a Master of Science in Artificial Intelligence', 'University of Texas at Austin'] }
 ];
 
 export default function Globe() {
@@ -128,7 +128,7 @@ export default function Globe() {
 
             <button 
               onClick={() => setSelectedCity(null)} 
-              className="absolute top-3 right-3 w-8 h-8 flex items-center justify-center rounded-full bg-white/5 hover:bg-[#D4AF37]/20 text-white/50 hover:text-[#D4AF37] transition-colors duration-300 z-10"
+              className="absolute top-3 right-3 w-8 h-8 flex items-center justify-center rounded-full bg-white/5 hover:bg-[#D4AF37]/20 text-white/50 hover:text-[#D4AF37] transition-colors duration-300 z-20 cursor-pointer"
             >
               &times;
             </button>
@@ -144,7 +144,13 @@ export default function Globe() {
               
               <div className="h-[1px] w-full bg-gradient-to-r from-[#D4AF37]/40 via-[#D4AF37]/10 to-transparent mb-4"></div>
               
-              <p className="text-gray-300 font-light text-sm leading-relaxed">{displayCity.info}</p>
+              <ul className="text-gray-300 font-light text-sm leading-relaxed list-disc list-inside space-y-1">
+                {displayCity.info.map((point: string, idx: number) => (
+                  <li key={idx} className="marker:text-[#D4AF37]/70">
+                    <span className="ml-1">{point}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>
