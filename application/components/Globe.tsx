@@ -4,9 +4,13 @@ import GlobeT, { GlobeMethods } from 'react-globe.gl';
 import * as THREE from 'three';
 
 const citiesData = [
-  { lat: 34.0522, lng: -118.2437, city: 'Los Angeles', info: ['Current residence'] },
-  { lat: 37.7749, lng: -122.4194, city: 'San Francisco', info: ['Achieved Bachelor of Science in Computer Science', 'San Francisco State University'] },
-  { lat: 30.2672, lng: -97.7431, city: 'Austin', info: ['Currently pursuing a Master of Science in Artificial Intelligence', 'University of Texas at Austin'] }
+  { lat: 34.0522, lng: -118.2437, city: 'Los Angeles', info: ['Currently based out of Los Angeles, California', 
+    'Created a trading bot for the EAFC video game using screen scraping, written in Python.'] },
+  { lat: 37.7749, lng: -122.4194, city: 'San Francisco', info: ['Achieved Bachelor of Science in Computer Science at San Francisco State University', 
+    'Developed a Canvas-like web application called StudentConnect, created with React, MongoDB, Node.js, Express, and AWS in a team of six. The application delivers a virtual classroom for students to post questions and answers with a karma-based point system to push the best answers to the top.', 
+    'Created a databases system for Dieting and Fitness tracking apps, with entities focused on implementing new features, called DietaBase. Written in SQL with commands for queries written in Python, powered by a Discord bot hosted on Replit.'] },
+  { lat: 30.2672, lng: -97.7431, city: 'Austin', info: ['Currently pursuing a Master of Science in Artificial Intelligence at the University of Texas at Austin (Remote)', 
+    'Developed an emotion recognition an AI model that can detect emotions from facial expressions and a program to use the model in real time'] }
 ];
 
 export default function Globe() {
@@ -121,7 +125,7 @@ export default function Globe() {
       
       {/* Info Text Box Popup */}
       {displayCity && (
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 md:bottom-auto md:left-auto md:top-1/4 md:right-12 z-50 w-full max-w-[280px] pointer-events-none perspective-[1000px]">
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 md:bottom-auto md:left-auto md:top-1/4 md:right-12 z-50 w-[90vw] md:w-full max-w-[400px] pointer-events-none perspective-[1000px]">
           <div className={`relative w-full h-full pointer-events-auto bg-gradient-to-br from-[#1a1a1a]/95 to-[#0a0a0a]/95 backdrop-blur-xl border border-[#D4AF37]/30 p-6 rounded-2xl shadow-[0_20px_50px_-10px_rgba(212,175,55,0.3)] ${isClosing ? 'glass-popup-exit' : 'glass-popup'} overflow-hidden`}>
             
             <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-white/[0.03] to-transparent pointer-events-none"></div>
