@@ -5,12 +5,12 @@ import * as THREE from 'three';
 
 const citiesData = [
   { lat: 34.0522, lng: -118.2437, city: 'Los Angeles', info: ['Currently based out of Los Angeles, California', 
-    'Created a trading bot for the EAFC video game using screen scraping, written in Python.'] },
+    'Created a trading bot for the EAFC video game using screen scraping.'] },
   { lat: 37.7749, lng: -122.4194, city: 'San Francisco', info: ['Achieved Bachelor of Science in Computer Science at San Francisco State University', 
-    'Developed a Canvas-like web application called StudentConnect, created with React, MongoDB, Node.js, Express, and AWS in a team of six. The application delivers a virtual classroom for students to post questions and answers with a karma-based point system to push the best answers to the top.', 
-    'Created a databases system for Dieting and Fitness tracking apps, with entities focused on implementing new features, called DietaBase. Written in SQL with commands for queries written in Python, powered by a Discord bot hosted on Replit.'] },
+    'Developed a Canvas-like web application called StudentConnect, in a team of six, serving as Git Master and Backend Assistant', 
+    'Created DietBase, a database system for dieting and fitness tracking applications '] },
   { lat: 30.2672, lng: -97.7431, city: 'Austin', info: ['Currently pursuing a Master of Science in Artificial Intelligence at the University of Texas at Austin (Remote)', 
-    'Developed an emotion recognition an AI model that can detect emotions from facial expressions and a program to use the model in real time'] }
+    'Developed an AI model for recognizing facial emotions'] }
 ];
 
 export default function Globe() {
