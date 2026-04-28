@@ -1,7 +1,7 @@
 "use client";
 
-import { useScrollAnimation } from "../hooks/useScrollAnimation";
 import { ReactNode } from "react";
+import { motion } from "framer-motion";
 
 export default function AnimatedSection({ 
   children, 
@@ -12,15 +12,19 @@ export default function AnimatedSection({
   id?: string, 
   className?: string 
 }) {
-  const { ref, isVisible } = useScrollAnimation();
-
   return (
-    <section
+    <motion.section
       id={id}
-      ref={ref as any}
-      className={`${className} transition-all duration-1000 ease-out transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
+      className={className}
+      initial={{ opacity: 0, y: 60, filter: "blur(8px)", scale: 0.98 }}
+      whileInView={{ opacity: 1, y: 0, filter: "blur(0px)", scale: 1 }}
+      viewport={{ once: true, margin: "-10%" }}
+      transition={{ 
+        duration: 1.2, 
+        ease: [0.16, 1, 0.3, 1] // Custom spring-like easing
+      }}
     >
       {children}
-    </section>
+    </motion.section>
   );
 }
