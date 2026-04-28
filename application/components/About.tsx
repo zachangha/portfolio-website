@@ -11,14 +11,23 @@ export default function About() {
           </div>
           <div className="md:w-2/3 space-y-8">
             <p className="text-3xl md:text-4xl font-serif leading-tight text-white/90">
-              I am a developer driven by the pursuit of <span className="text-gold italic">uncompromising</span> quality and aesthetic excellence.
+              I’m a software engineer focused on building <span className="text-gold italic">intelligent systems</span> that enhance human capability and solve real-world problems.
             </p>
             <div className="space-y-6 text-white/40 text-lg font-medium leading-relaxed">
               <p>
-                With a deep background in systems architecture and user experience design, I bridge the gap between complex functionality and intuitive interaction.
+                During my time at San Francisco State University, I built a strong foundation in computer science and software engineering, graduating magna cum laude with a Bachelor of Science in 2024. I worked on a range of projects, including StudentConnect, a team-based platform aimed at improving student engagement, and DietBase, a database-driven system designed to help users stay on track with their dieting and fitness goals.
               </p>
               <p>
-                My work is defined by a meticulous attention to detail and a commitment to building digital solutions that are as robust as they are beautiful.
+                Currently, I am pursuing a Master of Science in Artificial Intelligence at The University of Texas at Austin, where I am expanding my skills in machine learning and intelligent systems. My recent work includes developing an emotion recognition system, applying AI techniques to interpret and respond to human behavior.
+              </p>
+              <p>
+                I’m particularly interested in artificial intelligence because of the rapid pace at which it is transforming how people work and create. As new tools and products continue to emerge, I’m motivated to be part of building systems that not only innovate, but also help individuals maximize their abilities and solve real-world problems more effectively.
+              </p>
+              <p>
+                Outside of building software, I spend much of my time staying active, whether that’s lifting, playing soccer, or basketball. I also enjoy creative work like sewing, where I can make something tangible with my own hands, as well as video editing, a hobby I’ve been developing since I was young.
+              </p>
+              <p>
+                I’m also drawn to competitive and strategy-based games. I play team-oriented games like Overwatch and Rocket League, where communication and coordination are key, and I enjoy games like chess that challenge me to think critically and analyze every move.
               </p>
             </div>
           </div>

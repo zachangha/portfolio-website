@@ -4,13 +4,13 @@ import GlobeT, { GlobeMethods } from 'react-globe.gl';
 import * as THREE from 'three';
 
 const citiesData = [
-  { lat: 34.0522, lng: -118.2437, city: 'Los Angeles', info: ['Currently based out of Los Angeles, California', 
-    'Created a trading bot for the EAFC video game using screen scraping.'] },
+  { lat: 34.0522, lng: -118.2437, city: 'Los Angeles', info: ['Currently based out of Los Angeles, California',
+    'Worked as a Support Engineer at Un1tee, helping customers find AI tools that best suit their needs, and fixing any technical issues they have ',
+  ] },
   { lat: 37.7749, lng: -122.4194, city: 'San Francisco', info: ['Achieved Bachelor of Science in Computer Science at San Francisco State University', 
     'Developed a Canvas-like web application called StudentConnect, in a team of six, serving as Git Master and Backend Assistant', 
     'Created DietBase, a database system for dieting and fitness tracking applications '] },
-  { lat: 30.2672, lng: -97.7431, city: 'Austin', info: ['Currently pursuing a Master of Science in Artificial Intelligence at the University of Texas at Austin (Remote)', 
-    'Developed an AI model for recognizing facial emotions'] }
+  { lat: 30.2672, lng: -97.7431, city: 'Austin', info: ['Currently pursuing a Master of Science in Artificial Intelligence at the University of Texas at Austin (Remote)'] }
 ];
 
 export default function Globe() {
