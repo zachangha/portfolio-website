@@ -64,11 +64,11 @@ export default async function Projects() {
   return (
     <section id="projects" className="py-32 px-6 bg-black relative">
       <div className="container mx-auto">
-        <div className="flex flex-col md:flex-row gap-12 mb-24 items-end">
-          <h2 className="text-6xl md:text-8xl font-serif tracking-tight text-white/10 select-none absolute -top-12 left-6">Works</h2>
-          <div className="z-10">
-            <h3 className="text-xs uppercase tracking-[0.6em] font-bold text-gold mb-4">Projects</h3>
-          </div>
+        <div className="mb-16">
+          <h2 className="text-xs uppercase tracking-[0.6em] font-bold text-gold mb-4 relative inline-block">
+            Projects
+            <div className="absolute -bottom-2 left-0 w-8 h-[1px] bg-gold" />
+          </h2>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">

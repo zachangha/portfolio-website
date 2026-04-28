@@ -13,8 +13,8 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Zach Angha | Premium Portfolio",
-  description: "Software Developer Portfolio with a premium Black & Gold aesthetic.",
+  title: "Zach Angha | Portfolio",
+  description: "Software Engineer Portfolio",
 };
 
 export default function RootLayout({
