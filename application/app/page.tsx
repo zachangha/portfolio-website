@@ -6,14 +6,14 @@ import Contact from "../components/Contact";
 
 export default function Home() {
   return (
-    <main className="bg-gray-900 min-h-screen text-white">
+    <main className="bg-black min-h-screen text-white">
       <Navbar />
       <Hero />
       <About />
       <Projects />
       <Contact />
-      <footer className="bg-gray-900 border-t border-gray-800 text-center py-6 text-gray-400">
-        <p>© {new Date().getFullYear()} My Portfolio. All rights reserved.</p>
+      <footer className="bg-black border-t border-gold/10 text-center py-6 text-white/40">
+        <p>© {new Date().getFullYear()} Zach Angha · Software Engineer</p>
       </footer>
     </main>
   );
