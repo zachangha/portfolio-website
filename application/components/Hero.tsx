@@ -21,7 +21,7 @@ export default function Hero() {
           </div>
           
           <p className="text-xl md:text-2xl text-white/40 max-w-lg font-medium leading-relaxed">
-            Crafting high-performance digital experiences with <span className="text-white/80">precision</span> and <span className="text-gold/80 italic font-serif">elegance.</span>
+            Crafting intelligent systems that bridge <span className="text-white/80">AI</span> and <span className="text-gold/80 italic font-serif">real-world impact.</span>
           </p>
           
           <div className="pt-4">
