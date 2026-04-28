@@ -12,7 +12,20 @@ export default function Contact() {
     
     const form = e.currentTarget;
     const formData = new FormData(form);
-    formData.append("access_key", "85ce0dcd-3890-46c2-8eb0-af38717b62e5");
+    
+    // Honeypot check
+    if (formData.get("botcheck")) {
+      setStatus("Message sent successfully!"); // Fake success for bots
+      return;
+    }
+
+    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
+    if (!accessKey) {
+      console.error("Web3Forms Access Key is missing! Please add NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY to your .env.local file.");
+      setStatus("Error: Configuration missing.");
+      return;
+    }
+    formData.append("access_key", accessKey);
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
@@ -47,6 +60,9 @@ export default function Contact() {
           
           <div className="md:w-1/2">
             <form onSubmit={handleSubmit} className="space-y-8">
+              {/* Honeypot field */}
+              <input type="checkbox" name="botcheck" className="hidden" style={{ display: "none" }} />
+              
               <div className="space-y-6">
                 <div>
                   <input

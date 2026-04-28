@@ -2,12 +2,18 @@ import AnimatedSection from "./AnimatedSection";
 
 export default async function Projects() {
   let projects = [];
+  const githubHeaders: any = {
+    "User-Agent": "portfolio-website"
+  };
+  
+  if (process.env.GITHUB_TOKEN) {
+    githubHeaders["Authorization"] = `Bearer ${process.env.GITHUB_TOKEN}`;
+  }
+
   try {
     const res = await fetch("https://api.github.com/users/zachangha/repos?sort=updated&per_page=6", { 
       next: { revalidate: 3600 },
-      headers: {
-        "User-Agent": "portfolio-website"
-      }
+      headers: githubHeaders
     });
     if (!res.ok) throw new Error("Failed to fetch repositories");
     const repos = await res.json();
@@ -18,7 +24,7 @@ export default async function Projects() {
         try {
           const langRes = await fetch(repo.languages_url, {
             next: { revalidate: 3600 },
-            headers: { "User-Agent": "portfolio-website" },
+            headers: githubHeaders,
           });
           if (langRes.ok) {
             const langs = await langRes.json();
