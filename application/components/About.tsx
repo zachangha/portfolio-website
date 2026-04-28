@@ -1,6 +1,8 @@
+import AnimatedSection from "./AnimatedSection";
+
 export default function About() {
   return (
-    <section id="about" className="py-32 px-6 bg-black relative">
+    <AnimatedSection id="about" className="py-32 px-6 bg-black relative">
       <div className="container mx-auto max-w-4xl relative z-10">
         <div className="flex flex-col md:flex-row gap-16 items-start">
           <div className="md:w-1/3">
@@ -33,6 +35,6 @@ export default function About() {
           </div>
         </div>
       </div>
-    </section>
+    </AnimatedSection>
   );
 }

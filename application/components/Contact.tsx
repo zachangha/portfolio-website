@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import AnimatedSection from "./AnimatedSection";
 
 export default function Contact() {
   const [status, setStatus] = useState<string>("");
@@ -35,7 +36,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-32 px-6 bg-black">
+    <AnimatedSection id="contact" className="py-32 px-6 bg-black">
       <div className="container mx-auto max-w-4xl">
         <div className="flex flex-col md:flex-row gap-20">
           <div className="md:w-1/2">
@@ -96,6 +97,6 @@ export default function Contact() {
           </div>
         </div>
       </div>
-    </section>
+    </AnimatedSection>
   );
 }

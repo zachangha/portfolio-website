@@ -1,3 +1,5 @@
+import AnimatedSection from "./AnimatedSection";
+
 export default async function Projects() {
   let projects = [];
   try {
@@ -62,7 +64,7 @@ export default async function Projects() {
   }
 
   return (
-    <section id="projects" className="py-32 px-6 bg-black relative">
+    <AnimatedSection id="projects" className="py-32 px-6 bg-black relative">
       <div className="container mx-auto">
         <div className="mb-16">
           <h2 className="text-xs uppercase tracking-[0.6em] font-bold text-gold mb-4 relative inline-block">
@@ -104,6 +106,6 @@ export default async function Projects() {
           ))}
         </div>
       </div>
-    </section>
+    </AnimatedSection>
   );
 }
