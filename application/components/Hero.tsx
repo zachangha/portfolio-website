@@ -11,7 +11,7 @@ export default function Hero() {
     <section id="hero" className="min-h-screen flex items-center justify-center bg-black text-white pt-32 pb-40 md:py-20 overflow-hidden relative">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--gold-dark)_0%,_transparent_70%)] opacity-10 pointer-events-none" />
       
-      <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10">
+      <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-24 md:gap-12 items-center relative z-10">
         <div className="text-left space-y-8 z-20">
           <div className="space-y-2">
             <h2 className="text-gold text-xs uppercase tracking-[0.5em] font-bold">Based in Los Angeles</h2>
